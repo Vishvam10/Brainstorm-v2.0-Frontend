@@ -1,4 +1,4 @@
-# brainstorm-frontend
+# Brainstorm-Frontend
 
 ## Project setup
 ```
