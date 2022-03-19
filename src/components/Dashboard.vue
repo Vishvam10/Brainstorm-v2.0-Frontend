@@ -8,22 +8,31 @@
             <h2 class="mt-4 mb-4 fw-bold">Decks</h2>
             <Decks />
             <h2 class="mb-4 mt-4 fw-bold">Performance : </h2>
-            <!-- {% if avgScore == "-" %} 
-                <h4 class="fs-5">( Please have atleast 2 decks to get performance metrics )</h4>
-            {% endif %} -->
+            <div class="mt-5">
+                <div class="row">
+                    <div class="col-4 d-flex flex-column">
+                        <Performance />
+                    </div>
+                    <div class="col-8">
+                        <Chart />
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 import Decks from "./Decks.vue"
+import Performance from "./Performance.vue"
+import Chart from "./Chart.vue"
 
 export default {
     name: 'App',
     components: {
-        Decks
+        Decks,
+        Performance,
+        Chart
     },
-
-
 }
 </script>

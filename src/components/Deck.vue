@@ -11,6 +11,9 @@
                         <a href="" style="margin: 0.2rem 0rem 0rem 0rem">
                             <ion-icon name="cloud-upload-outline"></ion-icon>
                         </a>
+                        <a href="" style="margin: 0.2rem 0rem 0rem 0rem">
+                            <ion-icon name="cloud-download-outline"></ion-icon>
+                        </a>
                         <router-link to="/deck/edit/2" style="margin: 0.2rem 0rem 0rem 0rem">
                             <ion-icon name="create-outline" aria-label="Edit"></ion-icon>
                         </router-link>
@@ -36,7 +39,6 @@
             <a href="/play?deck_id={{deck.deck_id}}" id="playButton" class="d-flex flex-row justify-content-center align-items-center">Play</a>
         </div>
     </div>
-    <router-view></router-view>
 </template>
 
 <script>
@@ -59,7 +61,7 @@ export default {
 
 <style scoped>
     ion-icon {
-        font-size: 2rem;
+        font-size: 1.6rem;
     }
     .deck_options_menu {
         margin: 0rem 0rem 4.1rem 4rem;
@@ -67,7 +69,7 @@ export default {
     .deck_options {
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         width: 5rem;
         padding: 1rem;

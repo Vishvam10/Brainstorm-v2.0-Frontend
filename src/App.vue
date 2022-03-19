@@ -1,10 +1,6 @@
 <template>
 <div>
-    <router-link to="/"></router-link>
-    <router-link to="/login"></router-link>
-    <router-link to="/signup"></router-link>
-    <router-link to="/dashboard"></router-link>
-    <router-view></router-view>
+  <router-view></router-view>
 </div>
 </template>
 
@@ -12,23 +8,9 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 
-import Home from "./components/Home.vue"
 
 export default {
 name: 'App',
-components: {
-  Home
-},
-// data() {
-//   return {
-//     showAddTask: false,
-//   }
-// },
-// methods: {
-//   toggleAddTask() {
-//     this.showAddTask = !this.showAddTask
-//   },
-// },
 }
 
 </script>

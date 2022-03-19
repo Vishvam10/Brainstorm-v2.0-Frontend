@@ -1,7 +1,7 @@
 <template>
      <div class="home">
         <nav>
-            <img src="/static/images/logo-light.png" alt="Brainstorm Logo" class="logo" style="position: absolute; left: 3%;">
+            <img src="./../static/images///logo-light.png" alt="Brainstorm Logo" class="logo" style="position: absolute; left: 3%;">
             <router-link to="/login" style="color: white; position: absolute; right: 24rem;">Login</router-link>
             <router-link to="/signup" style="color: white; position: absolute; right: 8rem;">Sign Up</router-link>
         </nav>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="row features-row" style="background: linear-gradient(to right, rgb(79, 172, 254), rgb(0, 242, 254));">
                     <div class="col-8">
-                        <img src="/static/images/create-deck.png" alt="Create Deck" style="width: 50rem; height: 40rem; border-radius: 2rem;">
+                        <img src="./../static/images//create-deck.png" alt="Create Deck" style="width: 50rem; height: 40rem; border-radius: 2rem;">
                     </div>
                     <div class="col-4">
                         <div style="margin: 0rem 0rem 0rem -5rem;">
@@ -47,12 +47,12 @@
                         </div>
                     </div>
                     <div class="col-8">
-                        <img src="/static/images/play.png" alt="Play" style="width: 40rem; height: 40rem; border-radius: 2rem; margin: 0rem 0rem 0rem 28rem;">
+                        <img src="./../static/images//play.png" alt="Play" style="width: 40rem; height: 40rem; border-radius: 2rem; margin: 0rem 0rem 0rem 28rem;">
                     </div>
                 </div>
                 <div class="row features-row" style="background: linear-gradient(to right, rgb(42, 245, 152), rgb(13, 173, 101));">
                     <div class="col-8">
-                        <img src="/static/images/performance1.png" alt="Performance" style="width: 28rem; height: 40rem; border-radius: 2rem;">
+                        <img src="./../static/images//performance1.png" alt="Performance" style="width: 28rem; height: 40rem; border-radius: 2rem;">
                     </div>
                     <div class="col-4">
                         <div style="width: 20rem;">
@@ -69,12 +69,12 @@
                         </div>
                     </div>
                     <div class="col-8">
-                        <img src="/static/images/performance2.png" alt="Deck Wise Analysis" style="width: 64rem; height: 40rem; border-radius: 2rem; margin: 0rem 0rem 0rem 3rem;">
+                        <img src="./../static/images//performance2.png" alt="Deck Wise Analysis" style="width: 64rem; height: 40rem; border-radius: 2rem; margin: 0rem 0rem 0rem 3rem;">
                     </div>
                 </div>
                 <div class="row features-row" style="background: linear-gradient(to right, rgb(246, 211, 101), rgb(253, 160, 133));">
                     <div class="col-8">
-                        <img src="/static/images/edit-deck.png" alt="Edit Deck" style="width: 50rem; height: 30rem; border-radius: 2rem;">
+                        <img src="./../static/images//edit-deck.png" alt="Edit Deck" style="width: 50rem; height: 30rem; border-radius: 2rem;">
                     </div>
                     <div class="col-4">
                         <div style="width: 20rem; margin: -2rem 0rem 0rem 0rem;">
