@@ -1,9 +1,9 @@
 <template>
-    <h1>Add Card</h1>
+    <h1>Settings Page</h1>
 </template>
 
 <script>
 export default {
-    name: "AddCard",
+    name: "Settings",
 }
 </script>

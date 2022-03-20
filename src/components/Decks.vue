@@ -25,3 +25,9 @@ export default {
     },    
 }
 </script>
+
+<style scoped>
+ion-icon[name="add-outline"] {
+    font-size: 4rem;
+}
+</style>

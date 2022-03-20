@@ -1,5 +1,4 @@
 <template>
-    <h1>Deck Management</h1>
     <router-view></router-view>
 </template>
 

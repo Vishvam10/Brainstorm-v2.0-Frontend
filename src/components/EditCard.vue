@@ -64,7 +64,6 @@ export default {
 
 <style scoped>
 ion-icon {
-    font-size: 2rem;
     color: black;
 }
 </style>

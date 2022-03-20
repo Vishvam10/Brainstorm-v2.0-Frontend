@@ -9,7 +9,9 @@
                     <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
                     <div class="deck_options" v-if="showOptions">
                         <a href="" style="margin: 0.2rem 0rem 0rem 0rem">
-                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <router-link to="/upload/sdfasdljh">
+                                <ion-icon name="cloud-upload-outline"></ion-icon>
+                            </router-link>
                         </a>
                         <a href="" style="margin: 0.2rem 0rem 0rem 0rem">
                             <ion-icon name="cloud-download-outline"></ion-icon>
@@ -36,7 +38,7 @@
             </div>
         </div>
         <div class="row" style="margin: 0.4rem 0rem 0rem 0rem">
-            <a href="/play?deck_id={{deck.deck_id}}" id="playButton" class="d-flex flex-row justify-content-center align-items-center">Play</a>
+            <router-link to="/play/{{deck.deck_id}}" id="playButton" class="d-flex flex-row justify-content-center align-items-center">Play</router-link>
         </div>
     </div>
 </template>

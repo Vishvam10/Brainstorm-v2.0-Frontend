@@ -4,13 +4,15 @@ import LoginPage from "./../views/LoginPage";
 import SignupPage from "./../views/SignupPage";
 import DeckManagementPage from "./../views/DeckManagementPage";
 import CardManagementPage from "./../views/CardManagementPage";
-import NotFoundPage from "./../views/NotFoundPage";
+import ErrorPage from "./../views/ErrorPage";
+import PlayPage from "./../views/PlayPage";
+import SettingsPage from "./../views/SettingsPage";
+import UploadPage from "./../views/UploadPage";
 
 import Home from "./../components/Home";
 import Dashboard from "./../components/Dashboard";
 import AddDeck from "./../components/AddDeck";
 import EditDeck from "./../components/EditDeck";
-import AddCard from "./../components/AddCard";
 import EditCard from "./../components/EditCard";
 
 const routes = [
@@ -50,24 +52,35 @@ const routes = [
     component: CardManagementPage,
     children: [
       {
-        path: "add/:deck_id",
-        component: AddCard,
-      },
-      {
         path: "edit/:deck_id",
         component: EditCard,
       },
     ],
   },
   {
-    path: "/:pathMatch(.*)*",
-    name: "NotFound",
-    component: NotFoundPage,
-  },
-  {
     path: "/dashboard",
     name: "Dashboard",
     component: Dashboard,
+  },
+  {
+    path: "/play/:deck_id",
+    name: "Play",
+    component: PlayPage,
+  },
+  {
+    path: "/upload/:deck_id",
+    name: "Upload",
+    component: UploadPage,
+  },
+  {
+    path: "/me",
+    name: "Settings",
+    component: SettingsPage,
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: ErrorPage,
   },
 ];
 

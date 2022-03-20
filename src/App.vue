@@ -42,7 +42,6 @@ margin: 1rem 0rem 1rem 0rem;
 }
 
 option {
-background-color: white;
 color: black;
 font-size: 1.6rem;
 border-radius: 1.2rem;
@@ -50,7 +49,7 @@ border-radius: 1.2rem;
 
 ion-icon {
   color: #0d6efd;
-font-size: 4rem;
+font-size: 2rem;
 transition: all 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 cursor: pointer;
 }
@@ -200,6 +199,15 @@ box-shadow: rgba(75, 77, 80, .4) 0px 8px 24px;
   height: 60rem;
   overflow-y: scroll;
   overflow-x: hidden;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: white;
+  box-shadow: rgba(75, 77, 80, 0.2) 0px 8px 24px;
+}
+
+.file_upload {
+  width: 40rem;
+  height: 20rem;
   padding: 2rem;
   border-radius: 1rem;
   background-color: white;
