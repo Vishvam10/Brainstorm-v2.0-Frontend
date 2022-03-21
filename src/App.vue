@@ -167,15 +167,6 @@ box-shadow: rgba(75, 77, 80, .4) 0px 8px 24px;
   box-shadow: rgba(75, 77, 80, 0.2) 0px 8px 24px;
 }
 
-.confirm_deletion {
-  width: 40rem;
-  min-height: auto;
-  padding: 4rem;
-  border-radius: 1rem;
-  background-color: white;
-  box-shadow: rgba(75, 77, 80, 0.2) 0px 8px 24px;
-}
-
 .deck-container {
   display: flex;
   flex-direction: row;

@@ -143,7 +143,6 @@ export default {
                 headers: {
                     'Authorization': `Bearer ${auth_token}`,
                     'Access-Control-Allow-Origin': '*',
-                    'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
