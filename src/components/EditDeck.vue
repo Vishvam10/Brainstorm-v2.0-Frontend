@@ -18,7 +18,7 @@
                         <div class="col-12">
                             <input type="text" name="deck_name" class="form-control form-control-lg">
                             <label for="changeDeckName" class="btn btn-primary btn-lg" style="margin: 2rem 0rem 0rem 0rem; height: 4rem; width: 30rem; display: flex; align-items: center; justify-content: center;">Change Deck Name</label>
-                            <button name="submit" class="hide" id="changeDeckName"></button>
+                            <button name="submit" class="hide" id="changeDeckName" @click="changeDeckName"></button>
                         </div>
                     </form>
                 </div>
@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col d-flex flex-column justify-content-center align-items-center" style="margin: 0rem 13rem 0rem 0rem">
                     <h4 style="margin: 2rem 1rem 0rem 0rem">Want to edit the cards ?</h4>
-                    <router-link to="/card/edit/asdf323iuh" class="link-primary" style="margin: 0.4rem 10rem 2rem 0rem">Click here</router-link>
+                    <router-link :to="'/card/edit/' + $route.params.deck_id " class="link-primary" style="margin: 0.4rem 10rem 2rem 0rem">Click here</router-link>
                 </div>
             </div>
         </div>
@@ -36,6 +36,11 @@
 <script>
 export default {
     name: "EditDeck",
+    methods: {
+        changeDeckName() {
+            console.log("CLICKED");
+        }
+    }
 }
 </script>
 

@@ -18,26 +18,26 @@ import EditCard from "./../components/EditCard";
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: Home,
   },
   {
     path: "/login",
-    name: "Login",
+    name: "login",
     component: LoginPage,
   },
   {
     path: "/signup",
-    name: "Signup",
+    name: "signup",
     component: SignupPage,
   },
   {
     path: "/deck",
-    name: "Deck",
+    name: "deck",
     component: DeckManagementPage,
     children: [
       {
-        path: "add/:deck_id",
+        path: "add",
         component: AddDeck,
       },
       {
@@ -48,38 +48,39 @@ const routes = [
   },
   {
     path: "/card",
-    name: "Card",
+    name: "card",
     component: CardManagementPage,
     children: [
       {
         path: "edit/:deck_id",
+        name: "editCard",
         component: EditCard,
       },
     ],
   },
   {
     path: "/dashboard",
-    name: "Dashboard",
+    name: "dashboard",
     component: Dashboard,
   },
   {
     path: "/play/:deck_id",
-    name: "Play",
+    name: "play",
     component: PlayPage,
   },
   {
     path: "/upload/:deck_id",
-    name: "Upload",
+    name: "upload",
     component: UploadPage,
   },
   {
     path: "/me",
-    name: "Settings",
+    name: "settings",
     component: SettingsPage,
   },
   {
     path: "/:pathMatch(.*)*",
-    name: "NotFound",
+    name: "notFound",
     component: ErrorPage,
   },
 ];

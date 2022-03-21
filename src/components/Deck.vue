@@ -2,29 +2,26 @@
     <div class="deck-card" data-ID="{{deck.deck_id}}">
         <div class="row">
             <div class="col-8">
-                <h4 class="fw-bold text-secondary">Name</h4>
+                <h4 class="fw-bold text-secondary">{{ deck.deck_name }}</h4>
             </div>
             <div class="col-4">
                 <div class="deck_options_menu" @click="toggleDeckOptionsMenu">
                     <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
                     <div class="deck_options" v-if="showOptions">
                         <a href="" style="margin: 0.2rem 0rem 0rem 0rem">
-                            <router-link to="/upload/sdfasdljh">
+                            <router-link :to="'/upload/' + deck.deck_id">
                                 <ion-icon name="cloud-upload-outline"></ion-icon>
                             </router-link>
                         </a>
                         <a href="" style="margin: 0.2rem 0rem 0rem 0rem">
                             <ion-icon name="cloud-download-outline"></ion-icon>
                         </a>
-                        <router-link to="/deck/edit/2" style="margin: 0.2rem 0rem 0rem 0rem">
+                        <router-link :to="'/deck/edit/' + deck.deck_id" style="margin: 0.2rem 0rem 0rem 0rem">
                             <ion-icon name="create-outline" aria-label="Edit"></ion-icon>
                         </router-link>
-                        <form>
-                            <input type="hidden" name="name" value="value">
-                            <a href="/deck-management/delete?deck_id={{deck.deck_id}}&&deleteCards=True" style="margin: 0.2rem 0rem 0rem 0rem">
-                                <ion-icon name="trash-outline"></ion-icon>
-                            </a>
-                        </form>
+                        <span id="deleteBtn" style="margin: 0.2rem 0rem 0rem 0rem" @click="deleteDeck">
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -47,6 +44,7 @@
 
 export default {
     name: "Deck",
+    props: ["deck"],
     data() {
         return {
             showOptions: false,
@@ -55,8 +53,10 @@ export default {
     methods: {
         toggleDeckOptionsMenu() {
             this.showOptions = !this.showOptions
-            console.log(this.showOptions);
         },
+        deleteDeck() {
+            console.log("CLICKED");
+        }
     },   
 }
 </script>
