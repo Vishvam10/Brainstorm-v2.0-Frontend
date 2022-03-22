@@ -8,11 +8,11 @@
                     <router-link to="/me">
                         <ion-icon name="settings-outline"></ion-icon>
                     </router-link>
-                    <button class="btn btn-primary btn-lg mt-1" style="height: 3.4rem; border-radius: 1rem;" id="logoutBtn">Logout</button>
+                    <button class="btn btn-primary btn-lg mt-1" style="height: 3.4rem; border-radius: 1rem;" id="logoutBtn" @click="logoutHandler">Logout</button>
                 </span>
             </div>            
             <h2 class="mt-4 mb-4 fw-bold">Decks</h2>
-            <Decks :decks="decks" />
+            <Decks :decks="decks" @deckDeleted="getDecks" />
             <h2 class="mb-4 mt-4 fw-bold">Performance : </h2>
             <div class="mt-5">
                 <div class="row">
@@ -67,6 +67,10 @@ export default {
                 this.decks = JSON.parse(JSON.stringify(data))
             })
             .catch(err => console.log(err))
+        },
+        logoutHandler() {
+            localStorage.clear();
+            this.$router.push({ name: 'login' }) 
         }
     },
     mounted() {
