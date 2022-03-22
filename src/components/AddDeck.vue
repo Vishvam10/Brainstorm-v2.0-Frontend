@@ -153,7 +153,7 @@ export default {
             })
             .catch(err => console.log(err))
             this.temp_deck_id = ""
-            console.log(this.temp_deck_id);
+            this.$router.push({ name: 'dashboard' }) 
         },
         addAllQAs(e) {
             e.preventDefault();

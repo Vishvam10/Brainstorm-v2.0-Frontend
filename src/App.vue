@@ -198,7 +198,7 @@ box-shadow: rgba(75, 77, 80, .4) 0px 8px 24px;
 
 .file_upload {
   width: 40rem;
-  height: 20rem;
+  height: 24rem;
   padding: 2rem;
   border-radius: 1rem;
   background-color: white;

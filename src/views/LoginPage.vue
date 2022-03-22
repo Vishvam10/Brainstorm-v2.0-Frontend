@@ -69,6 +69,7 @@ export default {
                     if(data["status"] == 200) {
                         localStorage.setItem("user_access_token", data["access_token"]);
                         localStorage.setItem("user_id", data["user_id"]);
+                        this.$router.push({ name: 'dashboard' }) 
                     } else {
                         const markup =
                         `

@@ -13,7 +13,7 @@ import Home from "./../components/Home";
 import Dashboard from "./../components/Dashboard";
 import AddDeck from "./../components/AddDeck";
 import EditDeck from "./../components/EditDeck";
-import EditCard from "./../components/EditCard";
+import ManageCard from "./../components/ManageCard";
 
 const routes = [
   {
@@ -52,9 +52,8 @@ const routes = [
     component: CardManagementPage,
     children: [
       {
-        path: "edit/:deck_id",
-        name: "editCard",
-        component: EditCard,
+        path: "manage/:deck_id",
+        component: ManageCard,
       },
     ],
   },

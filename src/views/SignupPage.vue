@@ -74,7 +74,7 @@ export default {
             const res = this.validateForm(data);
             if(res == "OK") {
                 const BASE_API_URL = document.getElementById("base_api_url").textContent;
-                const url = `${BASE_API_URL}/api/user/`;
+                const url = `${BASE_API_URL}/api/user`;
                 console.log("URL : ", url);
                 fetch(url, {
                     method: 'POST',
@@ -90,6 +90,7 @@ export default {
                     console.log(data);
                     localStorage.setItem("user_name", data["user_name"]);
                     localStorage.setItem("user_id", data["user_id"]);
+                    this.$router.push({ name: 'login' })
                 })
                 .catch(err => console.log(err))
             }

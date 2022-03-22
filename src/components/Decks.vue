@@ -9,7 +9,7 @@
         </div>
         <div class="deck-container">
             <div v-for="deck in decks" :key="deck.deck_id">
-                <Deck :deck="deck"/>
+                <Deck :deck="deck" @deckDeleted="handleDeckDeleted" />
             </div>
         </div>
     </div>
@@ -20,7 +20,13 @@ import Deck from "./Deck.vue"
 
 export default {
     name: 'App',
+    emits: ["deckDeleted"],
     props: ["decks"],
+    methods: {
+        handleDeckDeleted() {
+            this.$emit("deckDeleted", true)
+        }
+    },
     components: {
         Deck
     },

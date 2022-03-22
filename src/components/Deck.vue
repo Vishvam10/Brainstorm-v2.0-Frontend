@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="row" style="margin: -0.6rem 0rem 0rem 0rem">
-            <router-link to="/play/{{deck.deck_id}}" id="playButton" class="d-flex flex-row justify-content-center align-items-center">Play</router-link>
+            <router-link :to="'/play/' + deck.deck_id" id="playButton" class="d-flex flex-row justify-content-center align-items-center">Play</router-link>
         </div>
     </div>
 </template>
@@ -45,6 +45,7 @@
 
 export default {
     name: "Deck",
+    emits: ["deckDeleted"],
     props: ["deck"],
     data() {
         return {
@@ -62,7 +63,9 @@ export default {
             document.getElementById(this.temp_deck_id).style.color = "red";
             console.log(this.temp_times_clicked);
             setTimeout(() => {
-                document.getElementById(this.temp_deck_id).style.color = "rgb(13,110,253)";
+                if(document.getElementById(this.temp_deck_id)) {
+                    document.getElementById(this.temp_deck_id).style.color = "rgb(13,110,253)";
+                }
                 this.temp_times_clicked = 0;
             }, 1500)
         },
@@ -84,6 +87,7 @@ export default {
             .then(res => res.json())
             .then(data => {
                 console.log(data, typeof(data));
+                this.$emit('deckDeleted', true)
             })
             .catch(err => console.log(err));
         },
