@@ -282,27 +282,26 @@ box-shadow: rgba(75, 77, 80, .4) 0px 8px 24px;
 
 .button-wrapper {
   height: 4rem;
-  width: 40rem;
+  width: 69rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  bottom: 10%;
-  left: 36;
+  bottom: -28%;
+  left: 0rem;
 }
 
 .q_details {
   position: relative;
-  top: -4rem;
-  left: -2rem;
+  top: 2rem;
 }
 
 #showAnswer {
   border-radius: 1.2rem;
   background: #000; 
   height: 4rem; 
-  width: 16rem; 
+  width: 50rem; 
 }
 
 #nextBtn {
@@ -317,19 +316,6 @@ box-shadow: rgba(75, 77, 80, .4) 0px 8px 24px;
 #nextBtn:hover {
   background-color: black;
   color: white;
-}
-
-#submitAll {
-  display: none;
-  background-color: black;
-  color: white;
-  width: 20rem;
-  height: 6rem;
-  font-size: 1.6rem;
-  border-radius: 2rem;
-  position: absolute;
-  top: 44%;
-  left: 44%;;
 }
 
 
