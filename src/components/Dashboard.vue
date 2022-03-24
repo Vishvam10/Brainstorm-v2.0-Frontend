@@ -22,7 +22,7 @@
                         <Performance />
                     </div>
                     <div class="col-8">
-                        <Chart />
+                        <Chart :decks="decks"/>
                     </div>
                 </div>
             </div>
