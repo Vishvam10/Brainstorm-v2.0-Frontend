@@ -1,6 +1,6 @@
 <template>
+    <span style="visibility: hidden; display: none;" id="base_api_url">{{ BASE_API_URL }}</span>
     <div class="deck-card">
-        <span style="visibility: hidden" id="base_api_url">{{BASE_API_URL}}</span>
         <div class="row">
             <div class="col-8">
                 <h4 class="fw-bold text-secondary">{{ deck.deck_name }}</h4>
@@ -30,8 +30,8 @@
         <div class="row">
             <div style="display: flex; flex-direction: column; justify-content: left; color: rgb(165, 165, 165);">
                 <div class="col-9">
-                    <p class="fs-5 mb-1 mt-1"><span class="fw-bold">Score :</span> 96%</p> 
-                    <p class="fs-5 mb-1 mt-1"><span class="fw-bold">Last Reviewed :</span> 12-02-2002</p>
+                    <p class="fs-5 mb-1 mt-1"><span class="fw-bold">Score :</span> {{ getScore }}%</p> 
+                    <p class="fs-5 mb-1 mt-1"><span class="fw-bold">Last Reviewed :</span> {{ getLastReviewed }}</p>
                 </div>
             </div>
         </div>
@@ -50,6 +50,7 @@ export default {
     data() {
         return {
             deck: this.deck,
+            review: {},
             showOptions: false,
             temp_times_clicked: 0,
             temp_deck_id: ""
@@ -74,7 +75,6 @@ export default {
             const deck_id = this.temp_deck_id;
             const auth_token = localStorage.getItem("user_access_token");
             const url = `${BASE_API_URL}/api/deck/${deck_id}`;
-            console.log("URL : ", url);
             fetch(url, {
                 method: "DELETE",
                 mode: "cors",
@@ -106,8 +106,45 @@ export default {
                 this.temp_times_clicked = 0;
                 this.temp_deck_id = "";
             }
+        },
+        getReview() {
+            const BASE_API_URL = document.getElementById("base_api_url").textContent;
+            const deck_id = this.deck.deck_id;
+            const auth_token = localStorage.getItem("user_access_token");
+            const url = `${BASE_API_URL}/api/review/${deck_id}`;
+            fetch(url, {
+                method: "GET",
+                mode: "cors",
+                headers: {
+                    'Access-Control-Allow-Origin': "*",
+                    'Authorization': `Bearer ${auth_token}`,
+                    'Accept' : "application/json"
+                }  
+            })
+            .then(res => res.json())
+            .then(data => {
+                this.review = data;
+            })
+            .catch(err => console.log(err))
+        },
+    },
+    computed: {
+        getScore() {
+            if(JSON.parse(JSON.stringify(this.review))["error_message"]) {
+                return 0
+            } 
+            return parseInt(JSON.parse(JSON.stringify(this.review))["score"])
+        },
+        getLastReviewed() {
+            if(JSON.parse(JSON.stringify(this.review))["error_message"]) {
+                return "Not reviewed yet"
+            } 
+            return JSON.parse(JSON.stringify(this.review))["last_reviewed"]
         }
-    },   
+    },
+    created() {
+        this.getReview()
+    }     
 }
 </script>
 

@@ -71,7 +71,6 @@ export default {
             const deck_id = document.getElementById("deck_id").textContent;
             const url = `${BASE_API_URL}/api/card/${deck_id}`;
             const auth_token = localStorage.getItem("user_access_token");
-            console.log("URL : ", url);
             fetch(url, {
                 method: 'GET',
                 headers: {
@@ -96,7 +95,6 @@ export default {
             const card_id = e.target.dataset.id;
             const url = `${BASE_API_URL}/api/card?card_id=${card_id}`;
             const auth_token = localStorage.getItem("user_access_token");
-            console.log("URL : ", url);
             const question = Array.from(document.getElementsByName("q_edited")).filter(x => x.dataset.id == card_id)[0].value
             const answer = Array.from(document.getElementsByName("a_edited")).filter(x => x.dataset.id == card_id)[0].value
             console.log(question, answer);
@@ -127,7 +125,6 @@ export default {
             const card_id = e.target.dataset.id;
             const url = `${BASE_API_URL}/api/card?card_id=${card_id}`;
             const auth_token = localStorage.getItem("user_access_token");
-            console.log("URL : ", url);
 
             fetch(url, {
                 method: 'DELETE',
@@ -154,7 +151,6 @@ export default {
             const deck_id = document.getElementById("deck_id").textContent;
             const url = `${BASE_API_URL}/api/card/${deck_id}`;
             const auth_token = localStorage.getItem("user_access_token");
-            console.log("URL : ", url);
             const question = []
             const answer = []
             const q = document.getElementsByName("q_new")[0].value;

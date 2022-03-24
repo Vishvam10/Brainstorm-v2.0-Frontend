@@ -1,7 +1,7 @@
 <template>
      <div class="bg">
-        <span style="visibility: hidden" id="base_api_url">{{BASE_API_URL}}</span>
-        <span style="visibility: hidden" id="deck_id">{{$route.params.deck_id}}</span>
+        <span style="visibility: hidden; display: none;" id="base_api_url">{{BASE_API_URL}}</span>
+        <span style="visibility: hidden; display: none;" id="deck_id">{{$route.params.deck_id}}</span>
         <div class="file_upload">
             <div style="margin: 1rem 0rem 0rem 0rem">
                 <span class="d-flex justify-content-center align-items-center flex-row">
@@ -37,7 +37,6 @@ export default {
             const uploaded_file = document.getElementById("file").files[0];
             const extension = uploaded_file.name.split('.').pop();
             const ALLOWED_EXTENSIONS = ["csv", "xlsx", "xlx"]
-            console.log("URL : ", url);
             if(ALLOWED_EXTENSIONS.includes(extension)) {
                 const form = new FormData();
                 form.append("File", uploaded_file);

@@ -1,6 +1,6 @@
 <template>
     <div class="bg">
-        <span style="visibility: hidden" id="base_api_url">{{BASE_API_URL}}</span>
+        <span style="visibility: hidden; display: none" id="base_api_url">{{BASE_API_URL}}</span>
         <div class="login d-flex flex-column justify-content-center align-items-center">
             <h1 class="fw-bold mb-5">Sign Up</h1>
             <div class="input-group input-group-sm mb-3 d-flex flex-column justify-content-center">
@@ -75,7 +75,6 @@ export default {
             if(res == "OK") {
                 const BASE_API_URL = document.getElementById("base_api_url").textContent;
                 const url = `${BASE_API_URL}/api/user`;
-                console.log("URL : ", url);
                 fetch(url, {
                     method: 'POST',
                     headers: {

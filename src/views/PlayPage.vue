@@ -1,18 +1,17 @@
 <template>
     <div class="bg play">
-        <span style="visibility: hidden" id="base_api_url">{{BASE_API_URL}}</span>
-        <span style="visibility: hidden" id="deck_id">{{$route.params.deck_id}}</span>
+        <span style="visibility: hidden; display: none;" id="base_api_url">{{BASE_API_URL}}</span>
+        <span style="visibility: hidden; display: none;" id="deck_id">{{$route.params.deck_id}}</span>
         <div class="position_container">
             <div class="cardContainer">
                 <div v-for="(card, index) in cards" :key="card.id">
-                    <div v-if="index == 0">
+                    <div v-if="index == 0 && !submitAllToggle">
                         <div class="flip-card">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front qacard">
                                     <div class="q_details">
-                                        <h2 class="fs-5 mb-2" id="qno">Question No : </h2>
+                                        <h2 class="fs-5 mb-2" id="qno">Question No : {{ current_question_no }}</h2>
                                         <h4 class="fw-bold mb-5" id="que">{{ card.question }}</h4>
-                                        <h5 class="fw-bold mb-5" id="que">{{ index }}</h5>
                                     </div>
                                 </div>
                                 <div class="flip-card-back">
@@ -25,22 +24,6 @@
                         </div>
                     </div>
                 </div>
-                    
-                <div class="button-wrapper">
-                    <template  v-if="submitAllToggle">
-                        <button class="btn btn-primary btn-lg" type="button" id="submitBtn" @click="submitHandler">Submit All Answers</button>
-                        <router-link to="/dashboard" class="btn btn-primary btn-lg" id="back">Go back to dashboard</router-link>
-                    </template >
-                    <template  v-else>
-                        <div class="answer">
-                            <button class="btn btn-primary btn-lg" id="showAnswer" type="button" @click="showAnswer">Show Answer</button>
-                        </div>
-                        <div class="transit-pages">
-                            <button class="btn btn-outline-primary btn-lg" id="nextBtn" @click="gotoNextQuestion">Next Question</button>
-                        </div>
-                    </template >
-                </div>
-                
                 <div v-if="!submitAllToggle" class="diffcard">
                     <div style="font-size: 1.2rem; color: grey">How difficult is the question ?</div>
                     <div class="submit_ctrl">
@@ -58,6 +41,22 @@
                         </div>
                     </div>
                 </div>
+                <div class="button-wrapper">
+                    <template  v-if="submitAllToggle">
+                        <button class="btn btn-primary btn-lg" type="button" id="submitBtn" @click="submitHandler">Submit All Answers</button>
+                        <router-link to="/dashboard" class="btn btn-primary btn-lg" id="back">Go back to dashboard</router-link>
+                    </template >
+                    <template v-if="!submitAllToggle">
+                        <div class="answer">
+                            <button class="btn btn-primary btn-lg" id="showAnswer" type="button" @click="showAnswer">Show Answer</button>
+                        </div>
+                        <div class="transit-pages">
+                            <button class="btn btn-outline-primary btn-lg" id="nextBtn" @click="gotoNextQuestion">Next Question</button>
+                        </div>
+                    </template>
+                </div>
+                
+                
             
             </div>
         </div>
@@ -71,7 +70,7 @@ export default {
         return {
             cards: [],
             total_no_of_q: 0,
-            current_question_no: 0,
+            current_question_no: 1,
             current_question: "",
             current_answer: "",
             qa_data : {
@@ -91,7 +90,6 @@ export default {
             const deck_id = document.getElementById("deck_id").textContent;
             const url = `${BASE_API_URL}/api/review/${deck_id}`;
             const auth_token = localStorage.getItem("user_access_token");
-            console.log("URL : ", url);
             const data = {
                 "total_q" : "0",
                 "easy_q" : "0",
@@ -122,7 +120,6 @@ export default {
             const deck_id = document.getElementById("deck_id").textContent;
             const url = `${BASE_API_URL}/api/card/${deck_id}`;
             const auth_token = localStorage.getItem("user_access_token");
-            console.log("URL : ", url);
             fetch(url, {
                 method: 'GET',
                 headers: {
@@ -163,7 +160,7 @@ export default {
             if(choice == null) {
                 return;
             } 
-            
+            console.log("Total : ", this.total_no_of_q, " Current : ", this.current_question_no);
             if(this.current_question_no < this.total_no_of_q ) {
                 const old_cards = JSON.parse(JSON.stringify(this.cards))
                 const ID = choice.id;
@@ -177,6 +174,10 @@ export default {
                 this.cards = updated_cards;
                 // console.log("QD : ", JSON.parse(JSON.stringify(this.qa_data)), " COUNTER : ", this.current_question_no);
             } else {
+                console.log("TOGGLE");
+                const ID = choice.id;
+                this.qa_data[ID]++;
+                this.qa_data["total_q"]++;
                 this.submitAllToggle = !this.submitAllToggle;
             }
 
@@ -192,7 +193,6 @@ export default {
             const deck_id = document.getElementById("deck_id").textContent;
             const url = `${BASE_API_URL}/api/review/${deck_id}`;
             const auth_token = localStorage.getItem("user_access_token");
-            console.log("URL : ", url);
             this.calculateScore();
             const data = {...this.qa_data};
             Object.keys(data).map(function(key, index) {
@@ -260,6 +260,23 @@ label {
   align-items: center;
   margin: 0rem 4rem 0rem 4rem;
   padding: 2rem;
+}
+#submitBtn {
+    border-radius: 2.4rem;
+    background: #000;
+    height: 8rem;
+    width: 50rem;
+    color: white;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: absolute;
+    right: 51rem;
+    top: 5rem;
+}
+#submitBtn:hover {
+    transform: scale(1.05);
+}
+#submitBtn:active {
+    transform: scale(1.0);
 }
 #submitAll {
   display: none;

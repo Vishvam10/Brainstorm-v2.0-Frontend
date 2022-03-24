@@ -1,7 +1,7 @@
 <template>
      <div class="bg">
-        <span style="visibility: hidden" id="base_api_url">{{BASE_API_URL}}</span>
-        <span style="visibility: hidden" id="deck_id">{{$route.params.deck_id}}</span>
+        <span style="visibility: hidden; display: none;" id="base_api_url">{{BASE_API_URL}}</span>
+        <span style="visibility: hidden; display: none;" id="deck_id">{{$route.params.deck_id}}</span>
         <div class="edit_deck">
             <div class="details" style="margin: 1rem 0rem 0rem 0rem">
                 <router-link to="/dashboard" class="link-primary d-flex justify-content-center" style="margin: 0rem 3rem 2rem 0rem; position: absolute;">
@@ -51,7 +51,6 @@ export default {
             const user_id = localStorage.getItem("user_id");
             const auth_token = localStorage.getItem("user_access_token");
             const url = `${BASE_API_URL}/api/deck?user_id=${user_id}`;
-            console.log("URL : ", url);
             fetch(url, {
                 method: "GET",
                 mode: "cors",
@@ -76,7 +75,6 @@ export default {
             const user_id = localStorage.getItem("user_id");
             const auth_token = localStorage.getItem("user_access_token");
             const url = `${BASE_API_URL}/api/deck/${deck_id}`;
-            console.log("URL : ", url);
             const updatedDeckName = document.getElementById("updatedDeckName").value;
             console.log("DN : ", updatedDeckName);
             const data = {

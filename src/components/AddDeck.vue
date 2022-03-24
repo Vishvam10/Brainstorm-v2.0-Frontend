@@ -1,7 +1,7 @@
 <template>
     <!-- <h1>{{ $route.params.deck_id }}</h1> -->
     <div class="bg">
-        <span style="visibility: hidden" id="base_api_url">{{BASE_API_URL}}</span>
+        <span style="visibility: hidden; display: none;" id="base_api_url">{{BASE_API_URL}}</span>
         <div class="add-deck">
             <div class="d-flex flex-row justify-content-between mb-5" style="height: 3.2rem;">
                 <router-link to="/dashboard">
@@ -108,7 +108,6 @@ export default {
             const url = `${BASE_API_URL}/api/deck`;
             const auth_token = localStorage.getItem("user_access_token");
             const user_id = localStorage.getItem("user_id");
-            console.log("URL : ", url);
             const data = {
                 user_id,
                 deck_name
@@ -137,7 +136,6 @@ export default {
             console.log("D : ", this.temp_deck_id);
             const url = `${BASE_API_URL}/api/card/${this.temp_deck_id}`;
             const auth_token = localStorage.getItem("user_access_token");
-            console.log("URL : ", url);
             fetch(url, {
                 method: 'POST',
                 headers: {

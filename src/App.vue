@@ -110,7 +110,8 @@ box-shadow: rgba(75, 77, 80, .4) 0px 8px 24px;
   height: 4rem;
   border-radius: 1.2rem;
   width: 100%;
-  margin: 3rem 0rem 0rem 0rem;
+  position: relative;
+  bottom: -5rem;
   transition: all .1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 

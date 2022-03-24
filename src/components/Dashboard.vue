@@ -1,9 +1,9 @@
 <template>
     <div class="bg">
-        <span style="visibility: hidden" id="base_api_url">{{BASE_API_URL}}</span>
-        <span style="visibility: hidden" id="deck_id">{{$route.params.deck_id}}</span>
+        <span style="visibility: hidden; display: none;" id="base_api_url">{{BASE_API_URL}}</span>
+        <span style="visibility: hidden; display: none;" id="deck_id">{{$route.params.deck_id}}</span>
         <div class="dashboard">
-            <span style="visibility: hidden" id="base_api_url">{{BASE_API_URL}}</span>
+            <span style="visibility: hidden; display: none;" id="base_api_url">{{BASE_API_URL}}</span>
             <div class="d-flex flex-row justify-content-between sticky-top mb-5" id="head">
                 <h1 class="fw-bold">User's Dashboard</h1>
                 <span class="d-flex flex-row justify-content-between align-items-center" style="width: 10rem;">
@@ -45,7 +45,6 @@ export default {
     data() {
         return {
             decks: [],
-            reviews: []
         }
     },
     methods: {
@@ -54,7 +53,6 @@ export default {
             const user_id = localStorage.getItem("user_id");
             const auth_token = localStorage.getItem("user_access_token");
             const url = `${BASE_API_URL}/api/deck?user_id=${user_id}`;
-            console.log("URL : ", url);
             fetch(url, {
                 method: "GET",
                 mode: "cors",
@@ -67,33 +65,8 @@ export default {
             .then(res => res.json())
             .then(data => {
                 this.decks = JSON.parse(JSON.stringify(data))
-                this.getReviews(JSON.parse(JSON.stringify(data)))
             })
             .catch(err => console.log(err))
-        },
-        getReviews(decks) {
-            const BASE_API_URL = document.getElementById("base_api_url").textContent;
-            const auth_token = localStorage.getItem("user_access_token").textContent;
-            let i = 0, n = decks.length;
-            while(i < n) {
-                const url = `${BASE_API_URL}/api/review/${decks[i].deck_id}`;
-                console.log("URL : ", url);
-                i++;
-            // fetch(url, {
-            //     method: "GET",
-            //     mode: "cors",
-            //     headers: {
-            //         'Access-Control-Allow-Origin': "*",
-            //         'Authorization': `Bearer ${auth_token}`,
-            //         'Accept' : "application/json"
-            //     }  
-            // })
-            // .then(res => res.json())
-            // .then(data => {
-            //     console.log(data, typeof(data));
-            // })
-            // .catch(err => console.log(err))
-            }
         },
         logoutHandler() {
             localStorage.clear();

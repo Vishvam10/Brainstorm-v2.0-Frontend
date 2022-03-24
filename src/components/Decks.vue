@@ -25,7 +25,7 @@ export default {
     methods: {
         handleDeckDeleted() {
             this.$emit("deckDeleted", true)
-        }
+        },
     },
     components: {
         Deck
