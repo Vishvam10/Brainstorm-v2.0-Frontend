@@ -146,12 +146,13 @@ export default {
             })
             .then((res) => res.blob())
             .then(data => {
+                const deck_name = this.deck.deck_name;
                 let url = window.URL.createObjectURL(data);
                 var link = document.createElement('a');
                 document.body.appendChild(link);
                 link.style = "display: none";
                 link.href = url;
-                link.download = "export_file.csv";
+                link.download = `${deck_name}.csv`;
                 link.click();
             })
             .catch(err => console.log(err))

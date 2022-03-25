@@ -11,19 +11,17 @@
                 </template>
             </template>            
         </select>
-        <div class="chart" style="width: 60rem;">
+        <div class="chart" style="width: 48.9rem; margin: 0rem 0rem 0rem -2rem">
             <canvas id="myChart"></canvas>             
         </div>
     </div>
 </template>
 
 <script>
-
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
 setTimeout(() => {
-
     const ctx = document.getElementById("myChart");
     const deckSelection = document.getElementById("deckSelection");
 
@@ -156,6 +154,7 @@ setTimeout(() => {
     }
     });
 }, 1000)
+
 
 
 export default {

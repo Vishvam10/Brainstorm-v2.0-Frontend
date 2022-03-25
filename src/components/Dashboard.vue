@@ -18,10 +18,10 @@
             <h2 class="mb-4 mt-4 fw-bold">Performance : </h2>
             <div class="mt-5">
                 <div class="row">
-                    <div class="col-4 d-flex flex-column">
+                    <div class="col-5 d-flex flex-column">
                         <Performance />
                     </div>
-                    <div class="col-8">
+                    <div class="col-7">
                         <Chart :decks="decks"/>
                     </div>
                 </div>
