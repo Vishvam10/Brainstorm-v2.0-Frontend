@@ -52,6 +52,7 @@ export default {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
+                    this.$router.push({ name: 'dashboard' })
                 })
                 .catch(err => console.log(err))
             }

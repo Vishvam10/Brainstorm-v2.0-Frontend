@@ -9,14 +9,12 @@
                 <div class="deck_options_menu" @click="toggleDeckOptionsMenu">
                     <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
                     <div class="deck_options" v-if="showOptions">
-                        <a href="" style="margin: 0.2rem 0rem 0rem 0rem">
-                            <router-link :to="'/upload/' + deck.deck_id">
-                                <ion-icon name="cloud-upload-outline"></ion-icon>
-                            </router-link>
-                        </a>
-                        <a href="" style="margin: 0.2rem 0rem 0rem 0rem">
+                        <router-link :to="'/upload/' + deck.deck_id" style="margin: 0.2rem 0rem 0rem 0rem">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                        </router-link>
+                        <span style="margin: 0.2rem 0rem 0rem 0rem" @click="exportDeck">
                             <ion-icon name="cloud-download-outline"></ion-icon>
-                        </a>
+                        </span>
                         <router-link :to="'/deck/edit/' + deck.deck_id" style="margin: 0.2rem 0rem 0rem 0rem">
                             <ion-icon name="create-outline" aria-label="Edit"></ion-icon>
                         </router-link>
@@ -127,6 +125,37 @@ export default {
             })
             .catch(err => console.log(err))
         },
+        exportDeck(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const BASE_API_URL = document.getElementById("base_api_url").textContent;
+            const deck_id = this.deck.deck_id;
+            const auth_token = localStorage.getItem("user_access_token");
+            const url = `${BASE_API_URL}/api/download/${deck_id}`;
+            const data = {
+                "file_type" : "csv"
+            }
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${auth_token}`,
+                    'Access-Control-Allow-Origin': '*',
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(data)
+            })
+            .then((res) => res.blob())
+            .then(data => {
+                let url = window.URL.createObjectURL(data);
+                var link = document.createElement('a');
+                document.body.appendChild(link);
+                link.style = "display: none";
+                link.href = url;
+                link.download = "export_file.csv";
+                link.click();
+            })
+            .catch(err => console.log(err))
+        }
     },
     computed: {
         getScore() {
