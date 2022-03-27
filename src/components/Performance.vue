@@ -36,6 +36,7 @@
 
 export default {
     name: "Performance",
+    props: ["ndecks"],
     data() {
         return {
             performance_data : {},
@@ -59,7 +60,6 @@ export default {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 this.performance_data = data
             })
             .catch(err => console.log(err))
@@ -67,7 +67,10 @@ export default {
     },
     mounted() {
         setTimeout(() => {
-            this.getPerformance();
+            if(this.ndecks >= 2) {
+                console.log("PERFORMANCE ENABLED");
+                this.getPerformance();  
+            }
         }, 500)
     }
 }

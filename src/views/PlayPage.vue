@@ -55,9 +55,6 @@
                         </div>
                     </template>
                 </div>
-                
-                
-            
             </div>
         </div>
     </div>
@@ -155,7 +152,9 @@ export default {
         gotoNextQuestion(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log("CLICKED");
+            if(this.answer_side) {
+                this.showAnswer(e)
+            }
             const choice = document.querySelector('input[name="difficulty"]:checked');
             if(choice == null) {
                 return;

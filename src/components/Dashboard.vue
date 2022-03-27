@@ -19,10 +19,10 @@
             <div class="mt-5">
                 <div class="row">
                     <div class="col-5 d-flex flex-column">
-                        <Performance />
+                        <Performance :ndecks=no_of_decks />
                     </div>
                     <div class="col-7">
-                        <Chart :decks="decks"/>
+                        <Chart :decks="decks" />
                     </div>
                 </div>
             </div>
@@ -45,6 +45,7 @@ export default {
     data() {
         return {
             decks: [],
+            no_of_decks : 0
         }
     },
     methods: {
@@ -65,6 +66,7 @@ export default {
             .then(res => res.json())
             .then(data => {
                 this.decks = JSON.parse(JSON.stringify(data))
+                this.no_of_decks = JSON.parse(JSON.stringify(data)).length
             })
             .catch(err => console.log(err))
         },
