@@ -1,6 +1,9 @@
 <template>
 <div>
-  <router-view></router-view>
+  <router-view @switchTheme="switchTheme"></router-view>
+  <!-- <div class="footer">
+    Made with ❤. Developed by <a href="https://github.com/Vishvam10" style="line-style: none; text-decoration: none">Vishvam</a>
+  </div> -->
 </div>
 </template>
 
@@ -10,7 +13,13 @@ import "bootstrap"
 
 
 export default {
-name: 'App',
+  name: 'App',
+  methods : {
+    switchTheme(data) {
+      console.log("DATA FROM APP : ", data);
+    }
+  }
+  
 }
 
 </script>
@@ -23,7 +32,11 @@ font-size: 63.5%;
 
 body {
 overflow-x: hidden;
-}
+font-smooth: always;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+text-rendering: optimizeLegibility;
+  }
 
 a {
 text-decoration: none;

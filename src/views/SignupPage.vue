@@ -70,8 +70,8 @@ export default {
             for(var pair of formData.entries()){
                 data[pair[0]] = pair[1];
             }
-            console.log(data, JSON.stringify(data));
             const res = this.validateForm(data);
+            console.log(res);
             if(res == "OK") {
                 const BASE_API_URL = document.getElementById("base_api_url").textContent;
                 const url = `${BASE_API_URL}/api/user`;
@@ -86,7 +86,7 @@ export default {
                 })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+                    console.log("RESULT : ", data);
                     localStorage.setItem("user_name", data["user_name"]);
                     localStorage.setItem("user_id", data["user_id"]);
                     this.$router.push({ name: 'login' })
