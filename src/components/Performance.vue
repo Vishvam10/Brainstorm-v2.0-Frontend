@@ -60,6 +60,7 @@ export default {
             })
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 this.performance_data = data
             })
             .catch(err => console.log(err))

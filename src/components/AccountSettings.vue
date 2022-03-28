@@ -18,6 +18,9 @@
                 <button class="form-control form-control-lg btn btn-primary" style="height: 4rem" @click="updateUserDetails">Save Changes</button>
             </div>
         </form>
+        <div class="row mb-3 mt-5">
+            <button class="btn btn btn-danger" style="height: 4rem" @click="deleteUser">Delete Account</button>
+        </div>
     </div>
 </template>
 
@@ -73,6 +76,33 @@ export default {
                 console.log(data);
             })
             .catch(err => console.log(err))
+        },
+        deleteUser(e) {
+            const user_name = localStorage.getItem("user_name")
+            const res = prompt("Are you sure ? If yes, please enter your username to confirm");
+            if(user_name == res) {
+                const BASE_API_URL = document.getElementById("base_api_url").textContent;
+                const user_id = localStorage.getItem("user_id")
+                const url = `${BASE_API_URL}/api/user/${user_id}`;
+                const auth_token = localStorage.getItem("user_access_token");
+
+                fetch(url, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${auth_token}`,
+                        'Access-Control-Allow-Origin': '*',
+                        'Content-Type': 'application/json'
+                    },
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if(data["status"] == 200) {
+                        console.log("DELETED SUCCESSFULLY");
+                        this.$router.push({ name: 'login' }) 
+                    }
+                })
+                .catch(err => console.log(err))
+            }
         }
             
     }

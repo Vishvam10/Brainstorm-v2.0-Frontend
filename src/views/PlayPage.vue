@@ -112,6 +112,15 @@ export default {
             .catch(err => console.log(err))
 
         },
+        shuffleCards(array) {
+            for (var i = array.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+            return array
+        },
         getAllCards() {
             const BASE_API_URL = document.getElementById("base_api_url").textContent;
             const deck_id = document.getElementById("deck_id").textContent;
@@ -127,7 +136,9 @@ export default {
             })
             .then(res => res.json())
             .then(data => {
-                this.cards = data;
+                console.log(data);
+                const d = this.shuffleCards(data)
+                this.cards = d;
                 this.get_current_question;
                 this.get_current_answer;
                 this.get_cards_length;
@@ -244,8 +255,8 @@ label {
 }
 .position_container {
     position: relative;
-    top: -5rem;
-    left: -12rem;
+    top: -6rem;
+    left: -3rem;
 }
 .diffcard {
     height: 30rem;

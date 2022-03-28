@@ -5,7 +5,7 @@
         <div class="dashboard">
             <span style="visibility: hidden; display: none;" id="base_api_url">{{BASE_API_URL}}</span>
             <div class="d-flex flex-row justify-content-between sticky-top mb-5" id="head">
-                <h1 class="fw-bold">User's Dashboard</h1>
+                <h1 class="fw-bold">{{ user_name }}'s Dashboard</h1>
                 <span class="d-flex flex-row justify-content-between align-items-center" style="width: 10rem;">
                     <router-link to="/me">
                         <ion-icon name="settings-outline"></ion-icon>
@@ -45,7 +45,8 @@ export default {
     data() {
         return {
             decks: [],
-            no_of_decks : 0
+            no_of_decks : 0,
+            user_name : ""
         }
     },
     methods: {
@@ -102,6 +103,7 @@ export default {
         setTimeout(() => {
             this.getDecks();
             this.getUserPreferenceData();
+            this.user_name = localStorage.getItem("user_name")
         }, 250)
     },
 }
