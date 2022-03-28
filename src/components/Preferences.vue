@@ -96,6 +96,7 @@ export default {
                 const parsed_data = JSON.parse(data["user_preferences"])
                 const export_format = parsed_data["export_format"]
                 const report_format = parsed_data["report_format"]
+                localStorage.setItem("export_format", export_format)
                 const reminders = parsed_data["reminders"]
                 document.querySelectorAll(`input[value=${export_format}]`)[0].checked = true
                 document.querySelectorAll(`input[value=${report_format}]`)[0].checked = true

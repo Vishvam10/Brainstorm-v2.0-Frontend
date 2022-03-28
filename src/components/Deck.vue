@@ -130,10 +130,11 @@ export default {
             e.stopPropagation();
             const BASE_API_URL = document.getElementById("base_api_url").textContent;
             const deck_id = this.deck.deck_id;
+            const user_id = localStorage.getItem("user_id");
             const auth_token = localStorage.getItem("user_access_token");
             const url = `${BASE_API_URL}/api/download/${deck_id}`;
             const data = {
-                "file_type" : "csv"
+                "user_id" : user_id
             }
             fetch(url, {
                 method: 'POST',
@@ -147,12 +148,18 @@ export default {
             .then((res) => res.blob())
             .then(data => {
                 const deck_name = this.deck.deck_name;
+                const file_type = localStorage.getItem("export_format")
+                console.log(data["type"]);
                 let url = window.URL.createObjectURL(data);
                 var link = document.createElement('a');
                 document.body.appendChild(link);
                 link.style = "display: none";
                 link.href = url;
-                link.download = `${deck_name}.csv`;
+                if(file_type == "excel") {
+                    link.download = `${deck_name}.xlsx`;
+                } else {
+                    link.download = `${deck_name}.csv`;
+                }
                 link.click();
             })
             .catch(err => console.log(err))

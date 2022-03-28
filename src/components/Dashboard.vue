@@ -73,10 +73,36 @@ export default {
         logoutHandler() {
             localStorage.clear();
             this.$router.push({ name: 'login' }) 
+        },
+        getUserPreferenceData() {
+            const BASE_API_URL = document.getElementById("base_api_url").textContent;
+            const user_id = localStorage.getItem("user_id");
+            const auth_token = localStorage.getItem("user_access_token");
+            const url = `${BASE_API_URL}/api/user/update_user_preferences/${user_id}`;
+            console.log(url);
+            fetch(url, {
+                method: "GET",
+                mode: "cors",
+                headers: {
+                    'Access-Control-Allow-Origin': "*",
+                    'Authorization': `Bearer ${auth_token}`,
+                    'Accept' : "application/json"
+                },
+            })
+            .then(res => res.json())
+            .then(data => {
+                const parsed_data = JSON.parse(data["user_preferences"])
+                const export_format = parsed_data["export_format"]
+                localStorage.setItem("export_format", export_format)
+            })
+            .catch(err => console.log(err))
         }
     },
     mounted() {
-        this.getDecks();
+        setTimeout(() => {
+            this.getDecks();
+            this.getUserPreferenceData();
+        }, 250)
     },
 }
 </script>

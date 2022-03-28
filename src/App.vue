@@ -17,7 +17,7 @@ export default {
   methods : {
     switchTheme(data) {
       console.log("DATA FROM APP : ", data);
-    }
+    },
   }
   
 }
