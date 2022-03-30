@@ -1,5 +1,7 @@
 # Brainstorm-Frontend
 
+An advanced version of the original Brainstorm app with Vue CLI as the frontend
+
 ## Project setup
 ```
 yarn install
