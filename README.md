@@ -1,6 +1,6 @@
-# Brainstorm-Frontend
+# Brainstorm App - Frontend
 
-An advanced version of the original Brainstorm app with Vue CLI as the frontend
+An advanced version of the original Brainstorm app with Vue CLI as the frontend.
 
 ## Project setup
 ```
